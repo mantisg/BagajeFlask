@@ -10,12 +10,17 @@ header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     position: fixed;
     top: 0px;
     width: 100%;
     margin: 0px;
     background-color: #5d3852dd;
     z-index: 25;
+}
+
+header img {
+    height: 140px;
 }
 
 h1 {
@@ -64,6 +69,11 @@ main {
     border-radius: 45px;
     box-shadow: 4px 8px #002989;
     padding: 0.5rem;
+    margin-bottom: 5rem;
+}
+
+.post-item {
+    width: 70%;
 }
 
 .post-title {
@@ -73,6 +83,38 @@ main {
 
 .post-title {
     color: #23C562;
+}
+
+.post-body {
+    color: #ddd;
+}
+
+.comments {
+    border-radius: 10px;
+    color: #01a340;
+}
+
+.comment-item {
+    background-color: #edb357;
+    border-radius: 45px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    width: 70%;
+    font-size: 1rem;
+    box-shadow: 2px 4px #cd9337;
+}
+
+.comm-grp {
+    display: flex;
+    flex-direction: column;
+    margin: 0px;
+}
+
+.comment-body {
+    font-size: 1.5rem;
 }
 
 form {
@@ -110,9 +152,8 @@ input, textarea {
 
 .delete-btn {
     border-radius: 10px;
-    width: 4rem;
-    padding: 0.2rem;
-    box-shadow: 2px 4px #111;
+    width: 3.6rem;
+    box-shadow: 1px 2px #111;
     background-color: #333;
     color: #bbb;
 }

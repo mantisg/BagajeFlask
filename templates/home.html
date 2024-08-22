@@ -8,6 +8,7 @@
 </head>
 <body>
     <header>
+        <img src="{{ url_for('static', filename='assets/teatro-mascaras.jpg') }}" />
         <h1>Bagaje de Aleyda Morales</h1>
         <nav>
             <a href="./sign-in">Sign In</a>
@@ -24,12 +25,13 @@
                 <div class="comments">
                     {% for comment in post.comments %}
                     <div class="comm-cont" data-comment-id="{{ comment._id }}">
-                        <p class="comment-item">
-                            <span class="comment-body">{{ comment.CommentBody }}</span>
-                            <br> - {{ comment.CreatedBy }} at {{ comment.CreatedAt }} 
+                        <div class="comment-item">
+                            <p class="comm-grp">
+                                <span class="comment-body">{{ comment.CommentBody }}</span>
+                                <br> - {{ comment.CreatedBy }} at {{ comment.CreatedAt }}
+                            </p>
                             <button class="delete-btn" id="delete-comment" onclick="deleteComment">Delete</button>
-                        </p>
-                        <br><br>
+                        </div><br>
                     </div>
                     {% endfor %}
                 </div>
@@ -42,6 +44,7 @@
                 <p class="post-body">Posts will go here.</p>
             {% endfor %}
         </section>
+        <section class="contact"></section>
     </main>
     <script src="{{ url_for('static', filename='js/home.js') }}"></script>
 </body>

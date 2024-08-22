@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bagaje</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/styles.css') }}" />
+</head>
+<body>
+    <header>
+        <h1>Create New Account</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="./sign-in">Sign In</a>
+            <a href="./about">About</a>
+            <a href="./admin">Administrator Tools</a>
+        </nav>
+    </header>
+    <main>
+        <section class="sign-up-area">
+            <form id="signup-form">
+                <input type="hidden" name="form_type" value="signup">
+                <input type="text" id="username" name="Username" placeholder="Choose Username" />
+                <input type="password" id="password" name="Password" placeholder="Choose Password" />
+                <input type="password" id="confirm" name="ConfirmPassword" placeholder="Confirm Password" />
+                <button type="button" onclick="submitForm('signup-form')" class="submit-btn">Submit</button>
+            </form>
+        </section>
+        <section class="sign-in-area">
+            <span id="already-account">Already have an account? <a class="sign-in-link" href="/sign-in">Sign In</a></span>
+        </section>
+    </main>
+</body>
+</html>

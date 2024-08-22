@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bagaje</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/styles.css') }}" />
+</head>
+<body>
+    <header>
+        <h1>Sign In</h1>
+        <nav>
+            <a href="./">Home</a>
+            <a href="./about">About</a>
+            <a href="./admin">Administrator Tools</a>
+        </nav>
+    </header>
+    <main>
+        <section class="sign-in-area">
+            <form id="signin-form">
+                <input type="hidden" name="form_type" value="signin">
+                <input type="text" id="username" name="Username" placeholder="Username" />
+                <input type="password" id="password" name="Password" placeholder="Password" />
+                <button type="button" onclick="submitForm('signin-form')" class="submit-btn">Submit</button>
+            </form>
+        </section>
+        <section class="sign-up-area">
+            <span id="no-account">Don't have an account? <a class="sign-up-link" href="/sign-up">Sign Up</a></span>
+        </section>
+    </main>
+</body>
+</html>

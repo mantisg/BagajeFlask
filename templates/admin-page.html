@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bagaje</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/styles.css') }}" />
+</head>
+<body>
+    <header>
+        <h1>Admin Page</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="./about">About</a>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Metrics</h2>
+            <div></div>
+        </section>
+        <section>
+            <h2>Add Post</h2>
+            <div>
+                <form id="post-form">
+                    <input type="hidden" name="form_type" value="new-post">
+                    <label>Title:</label>
+                    <input type="text" id="title" name="title" />
+                    <label>Body:</label>
+                    <textarea name="body" id="body" cols="40" rows="5"></textarea>
+                    <button type="button" onclick="submitForm('post-form')" class="submit-btn">Submit</button>
+                </form>
+            </div>
+        </section>
+    </main>
+    <script src="{{ url_for('static', filename='js/set-post.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bagaje</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/styles.css') }}" />
+</head>
+<body>
+    <header>
+        <h1>Bagaje de Aleyda Morales</h1>
+        <nav>
+            <a href="./sign-in">Sign In</a>
+            <a href="./about">About</a>
+            <a href="./admin">Administrator Tools</a>
+        </nav>
+    </header>
+    <main>
+        <section class="posts">
+            {% for post in posts %}
+            <div class="post-item" data-id="{{ post._id }}">
+                <h2 class="post-title">{{ post.title }} <button class="delete-btn" id="delete-post" onclick="deletePost">Delete</button></h2>
+                <p class="post-body">{{ post.body }}</p>
+                <div class="comments">
+                    {% for comment in post.comments %}
+                    <div class="comm-cont" data-comment-id="{{ comment._id }}">
+                        <p class="comment-item">
+                            <span class="comment-body">{{ comment.CommentBody }}</span>
+                            <br> - {{ comment.CreatedBy }} at {{ comment.CreatedAt }} 
+                            <button class="delete-btn" id="delete-comment" onclick="deleteComment">Delete</button>
+                        </p>
+                        <br><br>
+                    </div>
+                    {% endfor %}
+                </div>
+                <form class="comment-form" data-comment-id="{{ post._id }}">
+                    <textarea class="comment-input" name="comment" placeholder="Leave a comment..."></textarea>
+                    <button class="submit-btn" type="button" onclick="submitResponse(this)">Submit</button>
+                </form>
+            </div>
+            {% else %}
+                <p class="post-body">Posts will go here.</p>
+            {% endfor %}
+        </section>
+    </main>
+    <script src="{{ url_for('static', filename='js/home.js') }}"></script>
+</body>
+</html>

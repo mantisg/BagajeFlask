@@ -1,0 +1,122 @@
+html {
+    font-size: 16px;
+}
+
+body {
+    background-color: #cd9337;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    margin: 0px;
+    background-color: #5d3852dd;
+    z-index: 25;
+}
+
+h1 {
+    color: #23C562ee;
+    font-size: 3rem;
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+    nav a {
+        margin-left: 1rem;
+        padding: 0.3rem;
+        text-decoration: none;
+        border: 1px solid #7e3a0a;
+        background-color: #9b4609;
+        color: #23C562ee;
+        border-radius: 10px;
+    }
+
+main {
+    position: relative;
+    top: 8rem;
+    background-color: #edb357;
+    height: 100vh;
+}
+
+.posts {
+    position: relative;
+    top: 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+    margin: 0px auto;
+    font-size: 1.5rem;
+    background-color: #005cbc;
+    border-radius: 45px;
+    box-shadow: 4px 8px #002989;
+    padding: 0.5rem;
+}
+
+.post-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.post-title {
+    color: #23C562;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+}
+
+label, input, textarea, button, textarea {
+    margin: 10px;
+}
+
+label {
+    color: #005cbc;
+    font-size: 1.6rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+input, textarea {
+    border-radius: 10px;
+    box-shadow: 2px 4px #333;
+    width: 60%;
+    padding: 0.2rem;
+    background-color: #ccc;
+}
+
+.submit-btn {
+    width: 4rem;
+    border-radius: 10px;
+    padding: 0.3rem;
+    box-shadow: 2px 4px #333;
+    background-color: #ccc;
+}
+
+.delete-btn {
+    border-radius: 10px;
+    width: 4rem;
+    padding: 0.2rem;
+    box-shadow: 2px 4px #111;
+    background-color: #333;
+    color: #bbb;
+}
+
+.mom-blue {
+    color: #005cbc;
+}

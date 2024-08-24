@@ -161,3 +161,24 @@ input, textarea {
 .mom-blue {
     color: #005cbc;
 }
+
+.about-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#about-text {
+    width: 60%;
+    font-size: 1.5rem;
+    color: #005cbc;
+    font-weight: bold;
+    letter-spacing: 2px;
+    border: 10px dashed #b01111;
+    height: 500px;
+}
+
+#sculpted {
+    height: 500px;
+    border: 15px double #b01111;
+}

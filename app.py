@@ -1,9 +1,12 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, url_for, session, redirect
+from werkzeug.security import generate_password_hash, check_password_hash
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 import datetime
 
 app = Flask(__name__)
+
+app.secret_key = ''
 
 # MongoDB connection
 connection_string = "mongodb+srv://jbliven93:LucAsheArt022024@bagajedb.0ofh3.mongodb.net/"
@@ -31,13 +34,13 @@ def admin_page():
 def about_page():
     return render_template('about.html')
 
-@app.route('/sign-up')
-def signup():
+@app.route('/sign-up-page')
+def sign_up():
     users = users_collection.find()
     return render_template('signup.html', users=users)
 
-@app.route('/sign-in')
-def signin():
+@app.route('/sign-in-page')
+def sign_in():
     users = users_collection.find()
     return render_template('signin.html', users=users)
 
@@ -65,6 +68,9 @@ def delete_post(post_id):
     
 @app.route('/posts/<post_id>/comments', methods=['POST'])
 def add_comment(post_id):
+    if 'user_id' not in session:
+        return jsonify({'error': 'You must be signed in to comment'}), 403
+    
     try:
         # Convert the post_id from string to ObjectId
         post_id = ObjectId(post_id)
@@ -100,6 +106,56 @@ def delete_comment(post_id, comment_index):
             return jsonify({'success': False, 'message': 'Comment not found'}), 404
     except Exception as e:
         return jsonify({'success': False, 'error': str(e)}), 500
+    
+@app.route('/sign-up', methods=['POST'])
+def signup():
+    username = request.form['Username']
+    password = request.form['Password']
+    confirm_password = request.form['ConfirmPassword']
+
+    if password != confirm_password:
+        return jsonify({'error': 'Passwords do not match'}), 400
+
+    # Check if username is taken
+    existing_user = users_collection.find_one({'username': username})
+    if existing_user:
+        return jsonify({'error': 'Username already taken'}), 400
+
+    # Hash the password before storing it
+    hashed_password = generate_password_hash(password, method='sha256')
+
+    # Create a new user document
+    new_user = {
+        'username': username,
+        'password': hashed_password,
+        'created_at': datetime.datetime.utcnow()
+    }
+
+    # Insert the user document into the database
+    users_collection.insert_one(new_user)
+
+    return jsonify({'message': 'User registered successfully'}), 201
+
+@app.route('/sign-in', methods=['POST'])
+def signin():
+    username = request.form['Username']
+    password = request.form['Password']
+
+    # Find the user by username
+    user = users_collection.find_one({'username': username})
+    if not user or not check_password_hash(user['password'], password):
+        return jsonify({'error': 'Invalid username or password'}), 400
+
+    # Start a session for the user
+    session['user_id'] = str(user['_id'])
+    session['username'] = user['username']
+
+    return jsonify({'message': 'User signed in successfully'}), 200
+
+@app.route('/logout')
+def logout():
+    session.clear()
+    return redirect(url_for('home'))
 
 if __name__ == "__main__":
     app.run(debug=True, port=5000)

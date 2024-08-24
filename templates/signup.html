@@ -11,7 +11,7 @@
         <h1>Create New Account</h1>
         <nav>
             <a href="/">Home</a>
-            <a href="./sign-in">Sign In</a>
+            <a href="./sign-in-page">Sign In</a>
             <a href="./about">About</a>
             <a href="./admin">Administrator Tools</a>
         </nav>
@@ -27,8 +27,9 @@
             </form>
         </section>
         <section class="sign-in-area">
-            <span id="already-account">Already have an account? <a class="sign-in-link" href="/sign-in">Sign In</a></span>
+            <span id="already-account">Already have an account? <a class="sign-in-link" href="/sign-in-page ">Sign In</a></span>
         </section>
     </main>
+    <script src="{{ url_for('static', filename='js/profile-management.js') }}"></script>
 </body>
 </html>

@@ -3,6 +3,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 import datetime
+import numpy
 
 app = Flask(__name__)
 
